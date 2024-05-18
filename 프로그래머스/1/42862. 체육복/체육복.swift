@@ -4,7 +4,7 @@ func solution(_ n:Int, _ lost:[Int], _ reserve:[Int]) -> Int {
     var lost = lost.sorted()
     var reserve = reserve.sorted()
     var losCount = lost.count
-    if lost[0] == 0 { return n}
+    guard lost[0] != 0 else { return n}
     for i in 0..<lost.count{
         for j in 0..<reserve.count{
             if lost[i] == reserve[j]{
