@@ -56,10 +56,46 @@ final class FileIO {
 
 let io = FileIO()
 let n = io.readInt()
-var arr = [Int]()
-for _ in 0..<n {
-    for _ in 0..<n {
-        arr.append(io.readInt())
+var heap = [0]
+
+func push(_ num: Int) {
+    heap.append(num)
+    
+    var i = heap.count - 1
+    while i > 1 {
+        let p = i / 2
+        if heap[p] > heap[i] { break }
+        heap.swapAt(p, i)
+        i = p
     }
 }
-print(arr.sorted(by: >)[n-1])
+
+func pop() {
+    heap.swapAt(1, heap.count-1)
+    heap.removeLast()
+    
+    var i = 1
+    while i*2 <= heap.count-1 {
+        let lc = i * 2
+        let rc = i * 2 + 1
+        var maxc = lc
+        if rc <= heap.count-1 && heap[lc] < heap[rc] {
+            maxc = rc
+        }
+        if heap[maxc] <= heap[i] { break }
+        heap.swapAt(maxc, i)
+        i = maxc
+    }
+}
+
+for _ in 0..<n {
+    for _ in 0..<n {
+       push(io.readInt())
+    }
+}
+
+for _ in 0..<n-1 {
+    pop()
+}
+
+print(heap[1])
