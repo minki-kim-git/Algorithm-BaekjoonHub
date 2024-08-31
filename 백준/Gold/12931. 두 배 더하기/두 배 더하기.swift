@@ -77,14 +77,12 @@ func minimumCount() -> Int {
     }
     
     for i in arr {
-        var count = 0
         var temp = i
         while temp > 0 {
             if temp % 2 == 1 {
                 ans += 1
             }
             temp /= 2
-            count += 1
         }
         ans += temp
     }
