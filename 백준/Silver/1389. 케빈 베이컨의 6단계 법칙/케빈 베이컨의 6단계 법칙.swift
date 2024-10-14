@@ -70,7 +70,6 @@ for _ in 0..<m {
     arr[a].append(b)
     arr[b].append(a)
 }
-
 func bfs(_ num: Int) {
     
     var vis = Array(repeating: 0, count: n+1)
@@ -93,9 +92,7 @@ func bfs(_ num: Int) {
         sum = kn
     }
 }
-
 for i in 1...n {
     bfs(i)
 }
-
 print(ans)
