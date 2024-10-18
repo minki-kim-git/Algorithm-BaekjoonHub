@@ -56,11 +56,6 @@ final class FileIO {
 
 let io = FileIO()
 
-
-
-
-
-
 func bfs(_ v:Int, _ e:Int, _ arr: [[Int]]) -> Bool {
     
     var vis = Array(repeating: 0, count: v+1)
@@ -109,7 +104,3 @@ for _ in 0..<k {
     
     bfs(v, e, arr) == true ? print("YES") : print("NO")
 }
-
-
-
-
