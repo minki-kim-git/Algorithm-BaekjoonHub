@@ -85,16 +85,15 @@ for i in 1...n {
 
     while queue.count > index {
         for j in arr[queue[index]] {
-            if i == j.0 { continue }
-            if range[queue[index]] + j.1 > m { continue }
+            if i == j.0 || range[queue[index]] + j.1 > m { continue }
+            let dis = range[queue[index]] + j.1
             if range[j.0] == 0 {
                 queue.append(j.0)
+                range[j.0] = dis
                 sum += items[j.0]
-                range[j.0] = range[queue[index]] + j.1
-            }
-            else if range[j.0] > range[queue[index]] + j.1 {
+            } else if range[j.0] > dis {
                 queue.append(j.0)
-                range[j.0] = range[queue[index]] + j.1
+                range[j.0] = dis
             }
          }
         index += 1
