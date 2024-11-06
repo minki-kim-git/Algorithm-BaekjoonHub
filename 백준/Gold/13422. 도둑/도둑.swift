@@ -60,14 +60,8 @@ let t = io.readInt()
 
 func solve(_ n:Int, _ m:Int, _ k:Int, _ arr:[Int]) -> Int {
     
-    if n == m {
-        if  arr.reduce(0,+) < k {
-            return 1
-        } else {
-            return 0
-        }
-    }
-    
+    if n == m && arr.reduce(0,+) < k { return 1 }
+   
     var ans = 0
     var sum = 0
     var st = 0
