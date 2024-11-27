@@ -69,7 +69,7 @@ for _ in 0..<n {
 
 func solve(_ n:Int, _ arr: [Int], _ count: [Int]) -> String {
     var stack = [Int]()
-    var ans = Array(repeating: "", count: n)
+    var ans = Array(repeating: "-1", count: n)
     
     for i in 0..<n {
         while !stack.isEmpty && count[arr[stack.last!]] < count[arr[i]] {
@@ -77,10 +77,6 @@ func solve(_ n:Int, _ arr: [Int], _ count: [Int]) -> String {
             stack.removeLast()
         }
         stack.append(i)
-    }
-    
-    while !stack.isEmpty {
-        ans[stack.popLast()!] = "\(-1)"
     }
     
     return ans.joined(separator: " ")
