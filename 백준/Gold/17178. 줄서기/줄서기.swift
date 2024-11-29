@@ -67,16 +67,12 @@ var rankdic = [String:Int]()
 func solve(_ arr:[String], _ dic:[String:Int]) -> String{
     var stack = [String]()
     var rank = 1
-    func processStack() {
+    for str in arr {
+       stack.append(str)
         while !stack.isEmpty && dic[stack.last!] == rank{
             stack.removeLast()
             rank += 1
         }
-    }
-    for str in arr {
-        processStack()
-        stack.append(str)
-        processStack()
     }
     if rank == n * 5 + 1 {
         return "GOOD"
